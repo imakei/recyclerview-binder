@@ -19,8 +19,12 @@ android {
 }
 
 dependencies {
-    compile project(':binder')
-    compile "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
+    implementation project(':binder')
+    implementation "androidx.appcompat:appcompat:$SUPPORT_APP_COMPAT_VERSION"
+    implementation "androidx.recyclerview:recyclerview:$SUPPORT_APP_COMPAT_VERSION"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
 }
 
 apply from: 'android-artifacts.gradle'

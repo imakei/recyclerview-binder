@@ -23,9 +23,9 @@ dependencies {
     compile project(':binder')
     compile project(':binder-rx')
 
-    compile "com.android.support:appcompat-v7:$SUPPORT_APP_COMPAT_VERSION"
-    compile "com.android.support:recyclerview-v7:$SUPPORT_APP_COMPAT_VERSION"
-    compile "com.android.support:cardview-v7:$SUPPORT_APP_COMPAT_VERSION"
+    compile "androidx.appcompat:appcompat:$SUPPORT_APP_COMPAT_VERSION"
+    compile "androidx.recyclerview:recyclerview:$SUPPORT_APP_COMPAT_VERSION"
+    compile "androidx.cardview:cardview:$SUPPORT_APP_COMPAT_VERSION"
     compile "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
 
     compile 'com.jakewharton:butterknife:6.1.0'

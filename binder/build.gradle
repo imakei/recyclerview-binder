@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion COMPILE_SDK_VERSION as int
@@ -18,27 +20,31 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:$SUPPORT_APP_COMPAT_VERSION"
-    compile "com.android.support:recyclerview-v7:$SUPPORT_APP_COMPAT_VERSION"
+    implementation "androidx.appcompat:appcompat:$SUPPORT_APP_COMPAT_VERSION"
+    implementation "androidx.recyclerview:recyclerview:$SUPPORT_APP_COMPAT_VERSION"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
-android.libraryVariants.all { variant ->
-    if (variant.buildType.isDebuggable()) {
-        return; // Skip debug builds.
-    }
-    task("javadoc${variant.name.capitalize()}", type: Javadoc) {
-        description "Generates Javadoc for $variant.name."
-        source = variant.javaCompile.source
-        ext.androidJar = System.getenv("ANDROID_HOME") + "/platforms/${android.compileSdkVersion}/android.jar"
-        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
-    }
-
-    task("bundleJavadoc${variant.name.capitalize()}", type: Jar) {
-        description "Bundles Javadoc into zip for $variant.name."
-        classifier = "javadoc"
-        from tasks["javadoc${variant.name.capitalize()}"]
-    }
-}
+//android.libraryVariants.all { variant ->
+//    if (variant.buildType.isDebuggable()) {
+//        return; // Skip debug builds.
+//    }
+//    task("javadoc${variant.name.capitalize()}", type: Javadoc) {
+//        description "Generates Javadoc for $variant.name."
+//        source = variant.javaCompile.source
+//        ext.androidJar = System.getenv("ANDROID_HOME") + "/platforms/${android.compileSdkVersion}/android.jar"
+//        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
+//    }
+//
+//    task("bundleJavadoc${variant.name.capitalize()}", type: Jar) {
+//        description "Bundles Javadoc into zip for $variant.name."
+//        classifier = "javadoc"
+//        from tasks["javadoc${variant.name.capitalize()}"]
+//    }
+//}
 
 apply from: 'android-artifacts.gradle'
 apply from: 'bintray-publish.gradle'
+repositories {
+    mavenCentral()
+}

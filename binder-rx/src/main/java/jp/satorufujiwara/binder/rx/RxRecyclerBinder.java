@@ -2,7 +2,7 @@ package jp.satorufujiwara.binder.rx;
 
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import io.reactivex.subjects.PublishSubject;
 import jp.satorufujiwara.binder.ViewType;
